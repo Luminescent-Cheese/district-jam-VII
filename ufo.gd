@@ -8,11 +8,11 @@ enum UfoAction { LOWER, MOVE, SCAN, ABDUCT_COW }
 var current_action = null
 var time_doing_action = 0.0
 
-const MOVE_TIME_SECS = 0.3
+const MOVE_TIME_SECS = 0.5
 const SCAN_TIME_SECS = 0.2
 
 var direction: Vector2 = Vector2.ZERO
-const SPEED = 500.0
+const SPEED = 250.0
 
 func _ready() -> void:
 	current_action = UfoAction.LOWER
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		lower()
 
 func scan_for_cow():
-	var cows_in_beam = beam_area.get_overlapping_bodies()
+	var cows_in_beam = beam_area.get_overlapping_bodies()	
 	for cow in cows_in_beam:
 		if cow.name.contains("Cow"):
 			print("Found cow at position", cow.global_position)
