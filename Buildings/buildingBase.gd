@@ -15,6 +15,8 @@ enum type{combat,farm}
 
 var canFire:bool
 
+#makes sure its not immediatly placed
+@onready var canPlace = false
 func _ready() -> void:
 	canFire = true
 	cooldown.wait_time = fireRate
@@ -35,8 +37,10 @@ func _physics_process(delta: float) -> void:
 		#all stuff tower does
 
 func _buildPlace() -> void:
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		canPlace = true
 	position = Vector2(get_global_mouse_position().x,0).snapped(TILE_SIZE)
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and canPlace:
 		xPos = position.x
 		#placement particles
 		$PlacementParticles.emitting = true

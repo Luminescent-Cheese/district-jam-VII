@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b2vt2s656fr3m" path="res://Buildings/building.tscn" id="1_ju177"]
 [ext_resource type="Texture2D" uid="uid://blj5qc8of14eq" path="res://GeneralArt/CropsArt/CarrotGrow.png" id="2_bw225"]
-[ext_resource type="Script" uid="uid://d02x5v03sborg" path="res://farm_logic.gd" id="2_vkr66"]
+[ext_resource type="Script" uid="uid://d02x5v03sborg" path="res://Buildings/farm_logic.gd" id="2_vkr66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t23pn"]
 size = Vector2(128, 84)

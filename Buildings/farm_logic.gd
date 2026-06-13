@@ -19,6 +19,5 @@ func _on_cooldown_timeout() -> void:
 
 func _on_clickable_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Input.is_action_just_pressed("leftClick"):
-		print(growthStage)
 		if growthStage ==4:
 			growthStage = 0

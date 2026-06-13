@@ -3,6 +3,8 @@ extends Node2D
 const COW_SCENE = preload("res://cow.tscn")
 const UFO_SCENE = preload("res://ufo.tscn")
 
+const CARROT_CANNON = preload("res://Buildings/carrot_cannon.tscn")
+const CARROT_FARM = preload("res://Buildings/carrot_farm.tscn")
 @onready var player_camera = get_node("/root/Game/PlayerCamera")
 
 enum bullet{Carrot}
@@ -34,3 +36,12 @@ func spawn_ufo() -> void:
 func cow_abducted(cow, ufo):
 	print("%s was abducted by %s" % [cow.name, ufo.name])
 	cow.queue_free()
+
+#Buying stuff from shop
+func _on_shop_ui_attempt_buy(boughtObject: String) -> void:
+	var new_building
+	if boughtObject == "CarrotCannon":
+		new_building = CARROT_CANNON.instantiate()
+	elif boughtObject == "CarrotFarm":
+		new_building = CARROT_FARM.instantiate()
+	add_child(new_building)
