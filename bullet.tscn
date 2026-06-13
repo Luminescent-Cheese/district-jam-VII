@@ -29,7 +29,7 @@ animations = [{
 height = 54.0
 
 [node name="Bullet" type="CharacterBody2D" unique_id=1804718481]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_v8qja")
 

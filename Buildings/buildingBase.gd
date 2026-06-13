@@ -5,7 +5,7 @@ const BULLET = preload("res://bullet.tscn")
 const TILE_SIZE: Vector2 = Vector2(128,128)
 
 @export var bulletSpawn:Marker2D
-@onready var xPos = 99999
+@export var xPos = 99999
 @export var cost: float
 enum bullet{Carrot}
 @export var bulletType:bullet
@@ -46,6 +46,7 @@ func fireBullet()-> void:
 	newBullet.position = bulletSpawn.global_position
 	#replace below with proper position later
 	newBullet.direction = (bulletSpawn.global_position).direction_to(get_global_mouse_position())
+	newBullet.name = "bullet"
 	add_sibling(newBullet)
 
 

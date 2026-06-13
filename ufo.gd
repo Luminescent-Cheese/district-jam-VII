@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var hurtbox: Area2D = $HurtBox
 @onready var beam_area: Area2D = $Beam2D
 @onready var player_camera = get_node("/root/Game/PlayerCamera")
 
@@ -15,6 +16,7 @@ const SCAN_TIME_SECS = 0.2
 var moveed_same_direction_count = 0
 var direction: Vector2 = Vector2.ZERO
 const SPEED = 250.0
+
 
 func _ready() -> void:
 	current_action = UfoAction.LOWER
@@ -79,3 +81,8 @@ func lower():
 	direction = Vector2(0, 1)
 	velocity = direction * 200
 	move_and_slide()
+
+
+func _on_hurt_box_body_entered(bullet: Node2D) -> void:
+	print("%s has been shot by %s!" % [self.name, bullet.name])
+	bullet.queue_free()

@@ -30,6 +30,7 @@ leftClick={
 [layer_names]
 
 2d_physics/layer_2="Cows"
+2d_physics/layer_3="Player Bullets"
 
 [physics]
 
