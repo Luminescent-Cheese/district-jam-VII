@@ -3,26 +3,27 @@ extends Node2D
 const COW_SCENE = preload("res://cow.tscn")
 const UFO_SCENE = preload("res://ufo.tscn")
 
+@onready var player_camera = get_node("/root/Game/PlayerCamera")
+
 func _ready() -> void:
 	spawn_cows(5)
 	spawn_ufo()
 
 func spawn_cows(num_cows: int) -> void:
-	var world_bounds = CoordsUtils.get_world_bounds(self)
-	
 	for i in range(num_cows):	
 		var new_cow = COW_SCENE.instantiate()
-		var cow_location = Vector2(CoordsUtils.get_random_x_in_world(self), 15)
+		var random_x = CoordsUtils.get_random_x_in_camera(player_camera)
+		var cow_location = Vector2(random_x, 15)
 		new_cow.position = cow_location
 		new_cow.name = "Cow %s" % i
 		add_child(new_cow)
 
 func spawn_ufo() -> void:
-	var world_bounds = CoordsUtils.get_world_bounds(self)
+	var bounds = CoordsUtils.get_camera_bounds(player_camera)
+	var random_x = CoordsUtils.get_random_x_in_camera(player_camera)
 	
 	# random x position in viewport, at top (it will descend and search)
 	var new_ufo = UFO_SCENE.instantiate()
-	var random_x = CoordsUtils.get_random_x_in_world(self)
-	new_ufo.position = Vector2(random_x, world_bounds.min_y + 240)
+	new_ufo.position = Vector2(random_x, bounds.min_y)
 	
 	add_child(new_ufo)

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var beam_area: Area2D = $Beam2D
+@onready var player_camera = get_node("/root/Game/PlayerCamera")
 
 @export var cow_in_beam: CharacterBody2D = null
 
@@ -11,6 +12,7 @@ var time_doing_action = 0.0
 const MOVE_TIME_SECS = 0.5
 const SCAN_TIME_SECS = 0.2
 
+var searched_same_direction_count = 0
 var direction: Vector2 = Vector2.ZERO
 const SPEED = 250.0
 
@@ -28,12 +30,13 @@ func _physics_process(delta: float) -> void:
 		current_action = UfoAction.SCAN
 		time_doing_action = 0.0
 		$Beam2D.show()
-		direction = Vector2.ZERO
 	elif current_action == UfoAction.SCAN && time_doing_action > SCAN_TIME_SECS:
 		current_action = UfoAction.MOVE
 		time_doing_action = 0.0
+		if randf() < 0.2:
+			# randomly change direction 20% of the time
+			direction = Vector2(-direction.x, 0) 
 		$Beam2D.hide()
-		
 	
 	if current_action == UfoAction.SCAN:	
 		scan_for_cow()
@@ -52,13 +55,12 @@ func scan_for_cow():
 			break
 
 func search():
-	var world_bounds = CoordsUtils.get_world_bounds(self)
-	if (global_position.x < world_bounds.min_x):
+	var bounds = CoordsUtils.get_camera_bounds(player_camera)
+	if (global_position.x < bounds.min_x):
 		direction = Vector2(1, 0)
-	elif (global_position.x > world_bounds.max_x):
+	elif (global_position.x > bounds.max_x):
 		direction = Vector2(-1, 0)
-	
-	if direction == Vector2.ZERO:
+	elif direction == Vector2.ZERO:
 		var random_horizontal = [-1, 1].pick_random()
 		direction = Vector2(random_horizontal, 0)
 
@@ -66,8 +68,8 @@ func search():
 	move_and_slide()
 	
 func lower():
-	var world_bounds = CoordsUtils.get_world_bounds(self)
-	if (global_position.y > world_bounds.min_y + 40):
+	var bounds = CoordsUtils.get_camera_bounds(player_camera)
+	if (global_position.y > bounds.min_y + 500):
 		current_action = UfoAction.SCAN
 		time_doing_action = 0.0
 		direction = Vector2.ZERO
@@ -75,5 +77,5 @@ func lower():
 		return
 	
 	direction = Vector2(0, 1)
-	velocity = direction * 100
+	velocity = direction * 200
 	move_and_slide()
