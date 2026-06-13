@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if cow_in_beam:
+		center_on_cow(delta)
 		return
 	
 	time_doing_action += delta
@@ -55,6 +56,10 @@ func scan_for_cow():
 			cow.start_abduction(self)
 			cow_in_beam = cow
 			break
+
+func center_on_cow(delta):
+	var target_x = cow_in_beam.global_position.x
+	global_position.x = lerp(global_position.x, target_x, 5 * delta)
 
 func move():
 	var bounds = CoordsUtils.get_camera_bounds(player_camera)
