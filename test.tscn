@@ -2,11 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cvsegvgq73n84" path="res://carrot_cannon.tscn" id="1_8uh7m"]
 [ext_resource type="Texture2D" uid="uid://6j5q4vcde6ai" path="res://icon.svg" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://cv4cjmrwxdvsb" path="res://cow.tscn" id="3_6uqi0"]
 
 [node name="test" type="Node2D" unique_id=1199137001]
 
 [node name="Carrot Cannon" parent="." unique_id=1422852066 instance=ExtResource("1_8uh7m")]
 position = Vector2(6, -168)
+fireRate = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=25180313]
 position = Vector2(6, -168)
@@ -15,3 +17,6 @@ position = Vector2(6, -168)
 position = Vector2(-2, 64)
 scale = Vector2(20, 1)
 texture = ExtResource("1_37kl0")
+
+[node name="Cow" parent="." unique_id=730736805 instance=ExtResource("3_6uqi0")]
+position = Vector2(138, -1)

@@ -6,8 +6,8 @@ const BULLET = preload("res://bullet.tscn")
 @export var bulletSpawn:Marker2D
 @onready var xPos = 99999
 @export var cost: float
-enum bullets{Carrot}
-@export var bulletType:bullets
+enum bullet{Carrot}
+@export var bulletType:bullet
 @export var fireRate: float
 
 var canFire:bool
@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		$Pivot.look_at(get_global_mouse_position())
 		if canFire:
-			_fireBullet()
+			fireBullet()
 			canFire = false
 			cooldown.start()
 			
@@ -36,7 +36,7 @@ func _buildPlace() -> void:
 		#placement particles
 		$PlacementParticles.emitting = true
 
-func _fireBullet()-> void:
+func fireBullet()-> void:
 	var newBullet = BULLET.instantiate()
 	newBullet.position = bulletSpawn.global_position
 	#replace below with proper position later
