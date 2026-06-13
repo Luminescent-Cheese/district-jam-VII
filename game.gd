@@ -16,6 +16,7 @@ func spawn_cows(num_cows: int) -> void:
 		var cow_location = Vector2(random_x, 15)
 		new_cow.position = cow_location
 		new_cow.name = "Cow %s" % i
+		new_cow.connect("abducted", cow_abducted)
 		add_child(new_cow)
 
 func spawn_ufo() -> void:
@@ -27,3 +28,7 @@ func spawn_ufo() -> void:
 	new_ufo.position = Vector2(random_x, bounds.min_y)
 	
 	add_child(new_ufo)
+
+func cow_abducted(cow, ufo):
+	print("%s was abducted by %s" % [cow.name, ufo.name])
+	cow.queue_free()

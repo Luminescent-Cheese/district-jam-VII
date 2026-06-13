@@ -50,7 +50,7 @@ func scan_for_cow():
 	for cow in cows_in_beam:
 		if cow.name.contains("Cow"):
 			print("Found %s at position %s" % [cow.name, cow.global_position])
-			cow.abducted_by(self)
+			cow.start_abduction(self)
 			cow_in_beam = cow
 			break
 
