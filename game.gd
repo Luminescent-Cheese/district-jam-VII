@@ -12,7 +12,7 @@ func spawn_cows(num_cows: int) -> void:
 	
 	for i in range(num_cows):	
 		var new_cow = COW_SCENE.instantiate()
-		var cow_location = Vector2(CoordsUtils.get_random_x_in_world(self), world_bounds.max_y - 120)
+		var cow_location = Vector2(CoordsUtils.get_random_x_in_world(self), 15)
 		new_cow.position = cow_location
 		new_cow.name = "Cow %s" % i
 		add_child(new_cow)
@@ -22,6 +22,7 @@ func spawn_ufo() -> void:
 	
 	# random x position in viewport, at top (it will descend and search)
 	var new_ufo = UFO_SCENE.instantiate()
-	new_ufo.position = Vector2(CoordsUtils.get_random_x_in_world(self), world_bounds.min_y - 20)
+	var random_x = CoordsUtils.get_random_x_in_world(self)
+	new_ufo.position = Vector2(random_x, world_bounds.min_y + 240)
 	
 	add_child(new_ufo)

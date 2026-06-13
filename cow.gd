@@ -8,12 +8,14 @@ var abducted_by_ufo = null
 const RIGHT = Vector2(1, 0)
 const LEFT = Vector2(-1, 0)
 
+@onready var sprite2D = $AnimatedSprite2D
+
 func _ready() -> void:
 	direction = [RIGHT, LEFT].pick_random()
 	if (direction == LEFT):
-		$AnimatedSprite2D.flip_h = true
-	$AnimatedSprite2D.animation = "rest"
-	$AnimatedSprite2D.play()
+		sprite2D.flip_h = true
+	sprite2D.animation = "rest"
+	sprite2D.play()
 
 func _process(_delta: float) -> void:
 	if state == CowState.BEAM_UP:
@@ -22,8 +24,8 @@ func _process(_delta: float) -> void:
 func abducted_by(ufo) -> void:
 	state = CowState.BEAM_UP
 	abducted_by_ufo = ufo
-	$AnimatedSprite2D.animation = "panic"
-	$AnimatedSprite2D.play()
+	sprite2D.animation = "panic"
+	sprite2D.play()
 
 func beam_up() -> void:
 	direction = Vector2(0,-1)

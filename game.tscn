@@ -17,7 +17,7 @@ sources/0 = SubResource("TileSetAtlasSource_feb5d")
 [node name="Game" type="Node2D" unique_id=86373079]
 script = ExtResource("1_80nbo")
 
-[node name="playerCamera" type="Camera2D" parent="." unique_id=1232046301]
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1232046301]
 position = Vector2(0, -197)
 zoom = Vector2(0.6, 0.6)
 limit_left = -3500
