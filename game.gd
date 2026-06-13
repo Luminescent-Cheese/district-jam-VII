@@ -13,7 +13,7 @@ func spawn_cows(num_cows: int) -> void:
 	for i in range(num_cows):	
 		var new_cow = COW_SCENE.instantiate()
 		var random_x = CoordsUtils.get_random_x_in_camera(player_camera)
-		var cow_location = Vector2(random_x, 15)
+		var cow_location = Vector2(random_x, 0)
 		new_cow.position = cow_location
 		new_cow.name = "Cow %s" % i
 		new_cow.connect("abducted", cow_abducted)

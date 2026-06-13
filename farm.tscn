@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://dpsvuom0sy8kk"]
+
+[ext_resource type="PackedScene" uid="uid://b2vt2s656fr3m" path="res://Buildings/building.tscn" id="1_ju177"]
+[ext_resource type="Texture2D" uid="uid://blj5qc8of14eq" path="res://GeneralArt/CropsArt/CarrotGrow.png" id="2_bw225"]
+[ext_resource type="Script" uid="uid://d02x5v03sborg" path="res://farm_logic.gd" id="2_vkr66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t23pn"]
+size = Vector2(128, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkr66"]
+resource_local_to_scene = true
+size = Vector2(128, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t23pn"]
+atlas = ExtResource("2_bw225")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07l7t"]
+atlas = ExtResource("2_bw225")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jynu1"]
+atlas = ExtResource("2_bw225")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmuu5"]
+atlas = ExtResource("2_bw225")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v46g0"]
+atlas = ExtResource("2_bw225")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmnj1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t23pn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07l7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jynu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmuu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v46g0")
+}],
+"loop": true,
+"name": &"Carrots",
+"speed": 5.0
+}]
+
+[node name="Farm" unique_id=1422852066 instance=ExtResource("1_ju177")]
+fireRate = 0.5
+buildingType = 1
+
+[node name="ClickableArea" type="Area2D" parent="." index="0" unique_id=1967318146]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea" index="0" unique_id=1587889324]
+position = Vector2(0, -42)
+shape = SubResource("RectangleShape2D_t23pn")
+debug_color = Color(0.77512586, 0.44222206, 0.08890056, 0.41960785)
+
+[node name="FarmLogic" type="Node2D" parent="." index="1" unique_id=1178417540]
+script = ExtResource("2_vkr66")
+
+[node name="Base" parent="." index="3" unique_id=1108329169]
+position = Vector2(0, -0.5)
+scale = Vector2(0.4375, 0.0078124925)
+
+[node name="CollisionShape2D" parent="." index="4" unique_id=1382810759]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_vkr66")
+
+[node name="Cooldown" parent="." index="5" unique_id=1664144274]
+one_shot = true
+
+[node name="PlacementParticles" parent="." index="6" unique_id=1485913522]
+emission_rect_extents = Vector2(65, 7)
+
+[node name="CropGrowthSprites" type="AnimatedSprite2D" parent="." index="7" unique_id=2068991206]
+texture_filter = 1
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_kmnj1")
+animation = &"Carrots"
+
+[connection signal="input_event" from="." to="FarmLogic" method="_on_farm_input_event"]
+[connection signal="input_event" from="ClickableArea" to="FarmLogic" method="_on_clickable_area_input_event"]
+[connection signal="timeout" from="Cooldown" to="FarmLogic" method="_on_cooldown_timeout"]

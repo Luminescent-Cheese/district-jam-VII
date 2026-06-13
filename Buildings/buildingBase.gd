@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var cooldown = $Cooldown
 const BULLET = preload("res://bullet.tscn")
+const TILE_SIZE: Vector2 = Vector2(128,128)
 
 @export var bulletSpawn:Marker2D
 @onready var xPos = 99999
@@ -9,6 +10,8 @@ const BULLET = preload("res://bullet.tscn")
 enum bullet{Carrot}
 @export var bulletType:bullet
 @export var fireRate: float
+enum type{combat,farm}
+@export var buildingType:type
 
 var canFire:bool
 
@@ -20,17 +23,19 @@ func _physics_process(delta: float) -> void:
 	if xPos == 99999:
 		_buildPlace()
 	else:
-		$Pivot.look_at(get_global_mouse_position())
-		if canFire:
-			fireBullet()
-			canFire = false
-			cooldown.start()
+		match buildingType:
+			type.combat:
+				$Pivot.look_at(get_global_mouse_position())
+				if canFire:
+					fireBullet()
+					canFire = false
+					cooldown.start()
 			
 		
 		#all stuff tower does
 
 func _buildPlace() -> void:
-	position = Vector2(get_global_mouse_position().x,0)
+	position = Vector2(get_global_mouse_position().x,0).snapped(TILE_SIZE)
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		xPos = position.x
 		#placement particles
