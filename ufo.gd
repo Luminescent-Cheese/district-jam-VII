@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	if current_action == UfoAction.SCAN:	
 		scan_for_cow()
 	elif current_action == UfoAction.MOVE:
-		search2()
+		search()
 
 func scan_for_cow():
 	var cows_in_beam = beam_area.get_overlapping_bodies()
@@ -49,12 +49,6 @@ func scan_for_cow():
 			break
 
 func search():
-	if direction == Vector2.ZERO:
-		direction = Vector2(randf_range(-1, 1), 0).normalized()
-	velocity = direction * SPEED
-	move_and_slide()
-	
-func search2():
 	var world_bounds = CoordsUtils.get_world_bounds(self)
 	if (global_position.x < world_bounds.min_x):
 		direction = Vector2(1, 0)
@@ -64,8 +58,6 @@ func search2():
 	if direction == Vector2.ZERO:
 		var random_horizontal = [-1, 1].pick_random()
 		direction = Vector2(random_horizontal, 0)
-	
-	
-	
+
 	velocity = direction * SPEED
 	move_and_slide()
