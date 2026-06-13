@@ -29,4 +29,8 @@ func spawn_ufo() -> void:
 	var new_ufo = ufo_scene.instantiate()
 	var random_x = randf_range(min_x, max_x)
 	new_ufo.position = Vector2(random_x, min_y)
+	
+	var cow_location = $CowStartLocation
+	new_ufo.position = Vector2(cow_location.position.x, min_y)
+	
 	add_child(new_ufo)

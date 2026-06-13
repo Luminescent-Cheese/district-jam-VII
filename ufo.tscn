@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b5fhluriwxwjm"]
 
 [ext_resource type="Texture2D" uid="uid://6j5q4vcde6ai" path="res://icon.svg" id="1_c0rv2"]
+[ext_resource type="Script" uid="uid://chmbytf1dcnve" path="res://ufo.gd" id="1_lwnds"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ug312"]
 animations = [{
@@ -21,6 +22,7 @@ height = 142.0
 size = Vector2(111, 1598.5128)
 
 [node name="UFO" type="CharacterBody2D" unique_id=730736805]
+script = ExtResource("1_lwnds")
 
 [node name="ShipAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1775578603]
 scale = Vector2(1, 0.3046875)
