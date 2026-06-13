@@ -17,5 +17,4 @@ static func get_world_bounds(node: CanvasItem) -> Dictionary:
 
 static func get_random_x_in_world(node: CanvasItem) -> int:
 	var world_bounds = get_world_bounds(node)
-	return randf_range(world_bounds.min_x, world_bounds.max_x)
-	
+	return randi_range(world_bounds.min_x, world_bounds.max_x)

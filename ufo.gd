@@ -46,7 +46,8 @@ func scan_for_cow():
 	var cows_in_beam = beam_area.get_overlapping_bodies()	
 	for cow in cows_in_beam:
 		if cow.name.contains("Cow"):
-			print("Found cow at position", cow.global_position)
+			print("Found %s at position %s" % [cow.name, cow.global_position])
+			cow.abducted_by(self)
 			cow_in_beam = cow
 			break
 
