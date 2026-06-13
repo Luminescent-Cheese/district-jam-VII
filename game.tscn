@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b2dmbwb64w3sx"]
 
 [ext_resource type="Script" uid="uid://c8qhw51dswbfn" path="res://game.gd" id="1_80nbo"]
-[ext_resource type="Texture2D" uid="uid://dx2sb7kyq8jeb" path="res://grass.png" id="2_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://dx2sb7kyq8jeb" path="res://GeneralArt/grass.png" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://c1lvci8w6fntc" path="res://player_camera.gd" id="2_feb5d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]

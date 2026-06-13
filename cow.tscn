@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cv4cjmrwxdvsb"]
 
-[ext_resource type="Texture2D" uid="uid://4xhkyribvhah" path="res://Cow.png" id="1_nuh3y"]
 [ext_resource type="Script" uid="uid://b61mynstumv7" path="res://cow.gd" id="1_yj05v"]
-[ext_resource type="Texture2D" uid="uid://b03nvsdse0je8" path="res://Cow panic.png" id="2_m1w7b"]
+[ext_resource type="Texture2D" uid="uid://b03nvsdse0je8" path="res://GeneralArt/Cow panic.png" id="2_m1w7b"]
+[ext_resource type="Texture2D" uid="uid://njmwa2axnvik" path="res://GeneralArt/Cow (1).png" id="3_m1w7b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y5k1g"]
 atlas = ExtResource("2_m1w7b")
@@ -12,9 +12,13 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("2_m1w7b")
 region = Rect2(0, 128, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yj05v"]
-atlas = ExtResource("1_nuh3y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc63g"]
+atlas = ExtResource("3_m1w7b")
 region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhu8x"]
+atlas = ExtResource("3_m1w7b")
+region = Rect2(0, 128, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ug312"]
 animations = [{
@@ -31,11 +35,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yj05v")
+"texture": SubResource("AtlasTexture_tc63g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhu8x")
 }],
 "loop": true,
 "name": &"rest",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0rv2"]
@@ -51,7 +58,8 @@ script = ExtResource("1_yj05v")
 texture_filter = 1
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_ug312")
-animation = &"panic"
+animation = &"rest"
+frame_progress = 0.86121106
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=514977809]
 position = Vector2(0, -38)

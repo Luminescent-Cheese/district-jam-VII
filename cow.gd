@@ -13,6 +13,7 @@ func _ready() -> void:
 	if (direction == LEFT):
 		$AnimatedSprite2D.flip_h = true
 	$AnimatedSprite2D.animation = "rest"
+	$AnimatedSprite2D.play()
 
 func _process(_delta: float) -> void:
 	if state == CowState.BEAM_UP:

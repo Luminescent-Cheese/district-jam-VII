@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b03nvsdse0je8"
-path="res://.godot/imported/Cow panic.png-925965edfb8fb5f4ffa26e36f839fd13.ctex"
+uid="uid://njmwa2axnvik"
+path="res://.godot/imported/Cow (1).png-bf7b19a12fc15e00ee48428ee1d15ca3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cow panic.png"
-dest_files=["res://.godot/imported/Cow panic.png-925965edfb8fb5f4ffa26e36f839fd13.ctex"]
+source_file="res://GeneralArt/Cow (1).png"
+dest_files=["res://.godot/imported/Cow (1).png-bf7b19a12fc15e00ee48428ee1d15ca3.ctex"]
 
 [params]
 
