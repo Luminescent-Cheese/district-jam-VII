@@ -5,6 +5,8 @@ const UFO_SCENE = preload("res://ufo.tscn")
 
 @onready var player_camera = get_node("/root/Game/PlayerCamera")
 
+enum bullet{Carrot}
+
 func _ready() -> void:
 	spawn_cows(5)
 	spawn_ufo()
@@ -21,7 +23,7 @@ func spawn_cows(num_cows: int) -> void:
 
 func spawn_ufo() -> void:
 	var bounds = CoordsUtils.get_camera_bounds(player_camera)
-	var random_x = CoordsUtils.get_random_x_in_camera(player_camera)
+	var _random_x = CoordsUtils.get_random_x_in_camera(player_camera)
 	
 	# random x position in viewport, at top (it will descend and search)
 	var new_ufo = UFO_SCENE.instantiate()

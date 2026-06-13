@@ -9,6 +9,7 @@ extends CharacterBody2D
 enum UfoAction { LOWER, MOVE, SCAN, ABDUCT_COW }
 var current_action = null
 var time_doing_action = 0.0
+var health_pct = 100.0
 
 const MOVE_TIME_SECS = 0.5
 const SCAN_TIME_SECS = 0.2
@@ -46,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	elif current_action == UfoAction.MOVE:
 		move()
 	elif current_action == UfoAction.LOWER:
-		lower()
+		move_down()
 
 func scan_for_cow():
 	var cows_in_beam = beam_area.get_overlapping_bodies()	
@@ -61,20 +62,7 @@ func center_on_cow(delta):
 	var target_x = cow_in_beam.global_position.x
 	global_position.x = lerp(global_position.x, target_x, 5 * delta)
 
-func move():
-	var bounds = CoordsUtils.get_camera_bounds(player_camera)
-	if (global_position.x < bounds.min_x):
-		direction = Vector2(1, 0)
-	elif (global_position.x > bounds.max_x):
-		direction = Vector2(-1, 0)
-	elif direction == Vector2.ZERO:
-		var random_horizontal = [-1, 1].pick_random()
-		direction = Vector2(random_horizontal, 0)
-
-	velocity = direction * SPEED
-	move_and_slide()
-	
-func lower():
+func move_down():
 	var bounds = CoordsUtils.get_camera_bounds(player_camera)
 	if (global_position.y > bounds.min_y + 500):
 		current_action = UfoAction.SCAN
@@ -87,7 +75,24 @@ func lower():
 	velocity = direction * 200
 	move_and_slide()
 
+func move():
+	var bounds = CoordsUtils.get_camera_bounds(player_camera)
+	if (global_position.x < bounds.min_x):
+		direction = Vector2(1, 0)
+	elif (global_position.x > bounds.max_x):
+		direction = Vector2(-1, 0)
+	elif direction == Vector2.ZERO:
+		var random_horizontal = [-1, 1].pick_random()
+		direction = Vector2(random_horizontal, 0)
 
-func _on_hurt_box_body_entered(bullet: Node2D) -> void:
-	print("%s has been shot by %s!" % [self.name, bullet.name])
+	velocity = direction * SPEED
+	move_and_slide()
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if not body is Bullet:
+		return
+	
+	var bullet = body as Bullet
+	
+	print("%s has been shot bullet %s!" % [self.name, GameGlobals.bullet.keys()[bullet.bullet_type]])
 	bullet.queue_free()

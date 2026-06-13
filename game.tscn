@@ -26,6 +26,9 @@ script = ExtResource("1_80nbo")
 
 [node name="Farm" parent="." unique_id=1422852066 instance=ExtResource("3_fc0e3")]
 position = Vector2(0, -197)
+xPos = null
+cost = null
+bulletType = null
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1232046301]
 position = Vector2(0, -197)
@@ -44,3 +47,6 @@ tile_set = SubResource("TileSet_fc0e3")
 [node name="Carrot Cannon" parent="." unique_id=2100169005 instance=ExtResource("4_fc0e3")]
 position = Vector2(-8, 1)
 xPos = 0
+cost = null
+bulletType = null
+buildingType = null

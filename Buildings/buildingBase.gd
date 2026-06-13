@@ -7,8 +7,8 @@ const TILE_SIZE: Vector2 = Vector2(128,128)
 @export var bulletSpawn:Marker2D
 @export var xPos = 99999
 @export var cost: float
-enum bullet{Carrot}
-@export var bulletType:bullet
+
+@export var bulletType: GameGlobals.bullet
 @export var fireRate: float
 enum type{combat,farm}
 @export var buildingType:type
@@ -46,9 +46,8 @@ func fireBullet()-> void:
 	newBullet.position = bulletSpawn.global_position
 	#replace below with proper position later
 	newBullet.direction = (bulletSpawn.global_position).direction_to(get_global_mouse_position())
-	newBullet.name = "bullet"
+	newBullet.bullet_type = bulletType
 	add_sibling(newBullet)
-
 
 func _on_cooldown_timeout() -> void:
 	canFire = true
