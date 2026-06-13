@@ -64,3 +64,9 @@ texture = ExtResource("2_s8oic")
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=1382810759]
 position = Vector2(0, -95)
+
+[node name="PlacementParticles" parent="." index="4" unique_id=1485913522]
+lifetime = 0.7
+emission_rect_extents = Vector2(65, 10)
+scale_amount_min = 5.0
+scale_amount_max = 15.0

@@ -33,6 +33,8 @@ func _buildPlace() -> void:
 	position = Vector2(get_global_mouse_position().x,0)
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		xPos = position.x
+		#placement particles
+		$PlacementParticles.emitting = true
 
 func _fireBullet()-> void:
 	var newBullet = BULLET.instantiate()

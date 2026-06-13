@@ -3,12 +3,13 @@ extends Node2D
 @export var cow_scene: PackedScene
 @export var ufo_scene: PackedScene
 
+const COW_SCENE = preload("res://cow.tscn")
 func _ready() -> void:
 	spawn_cow()
 	spawn_ufo()
 
 func spawn_cow() -> void:
-	var new_cow = cow_scene.instantiate()
+	var new_cow = COW_SCENE.instantiate()
 	var cow_location = $CowStartLocation
 	new_cow.position = cow_location.position
 	add_child(new_cow)

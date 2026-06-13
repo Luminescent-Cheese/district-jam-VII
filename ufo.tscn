@@ -32,6 +32,7 @@ animation = &"hover"
 [node name="ShipCollisionShape2D" type="CollisionShape2D" parent="." unique_id=514977809]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_c0rv2")
+debug_color = Color(1, 0, 0.12156863, 0.41960785)
 
 [node name="Beam2D" type="Area2D" parent="." unique_id=1697338394]
 collision_layer = 0
@@ -41,6 +42,7 @@ collision_mask = 2
 position = Vector2(0.5, 260.47656)
 scale = Vector2(1, 0.3046875)
 shape = SubResource("RectangleShape2D_c0rv2")
+debug_color = Color(0.8980392, 0.89411765, 0.25490198, 0.41960785)
 
 [node name="Beam" type="ColorRect" parent="Beam2D" unique_id=1013836005]
 offset_left = -55.0
