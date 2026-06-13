@@ -19,6 +19,6 @@ func spawn_ufo() -> void:
 	# random x position in viewport, at top (it will descend and search)
 	var new_ufo = ufo_scene.instantiate()
 	var random_x = randf_range(world_bounds.min_x, world_bounds.max_x)
-	new_ufo.position = Vector2(random_x, world_bounds.min_y)
+	new_ufo.position = Vector2(random_x, world_bounds.min_y - 20)
 	
 	add_child(new_ufo)

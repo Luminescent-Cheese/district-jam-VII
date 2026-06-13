@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @export var cow_in_beam: CharacterBody2D = null
 
-enum UfoAction { MOVE, SCAN, ABDUCT_COW }
+enum UfoAction { LOWER, MOVE, SCAN, ABDUCT_COW }
 var current_action = null
 var time_doing_action = 0.0
 
@@ -15,7 +15,7 @@ var direction: Vector2 = Vector2.ZERO
 const SPEED = 500.0
 
 func _ready() -> void:
-	current_action = UfoAction.SCAN
+	current_action = UfoAction.LOWER
 	$Beam2D.hide()
 
 func _physics_process(delta: float) -> void:
@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 		scan_for_cow()
 	elif current_action == UfoAction.MOVE:
 		search()
+	elif current_action == UfoAction.LOWER:
+		lower()
 
 func scan_for_cow():
 	var cows_in_beam = beam_area.get_overlapping_bodies()
@@ -60,4 +62,17 @@ func search():
 		direction = Vector2(random_horizontal, 0)
 
 	velocity = direction * SPEED
+	move_and_slide()
+	
+func lower():
+	var world_bounds = CoordsUtils.get_world_bounds(self)
+	if (global_position.y > world_bounds.min_y + 40):
+		current_action = UfoAction.SCAN
+		time_doing_action = 0.0
+		direction = Vector2.ZERO
+		$Beam2D.show()
+		return
+	
+	direction = Vector2(0, 1)
+	velocity = direction * 100
 	move_and_slide()
