@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8qhw51dswbfn" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://dx2sb7kyq8jeb" path="res://GeneralArt/grass.png" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://dgtu6vnjs6h7i" path="res://UI/shop_ui.tscn" id="2_fc0e3"]
 [ext_resource type="Script" uid="uid://c1lvci8w6fntc" path="res://player_camera.gd" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dpsvuom0sy8kk" path="res://farm.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://cvsegvgq73n84" path="res://carrot_cannon.tscn" id="4_fc0e3"]
@@ -18,6 +19,10 @@ sources/0 = SubResource("TileSetAtlasSource_feb5d")
 
 [node name="Game" type="Node2D" unique_id=86373079]
 script = ExtResource("1_80nbo")
+
+[node name="UIOverlay" type="CanvasLayer" parent="." unique_id=65294411]
+
+[node name="ShopUI" parent="UIOverlay" unique_id=1223803749 instance=ExtResource("2_fc0e3")]
 
 [node name="Farm" parent="." unique_id=1422852066 instance=ExtResource("3_fc0e3")]
 position = Vector2(0, -197)
