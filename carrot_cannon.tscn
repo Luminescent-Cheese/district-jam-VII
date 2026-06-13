@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cvsegvgq73n84"]
 
-[ext_resource type="PackedScene" uid="uid://b2vt2s656fr3m" path="res://building.tscn" id="1_wimi5"]
-[ext_resource type="Texture2D" uid="uid://dn8nxh8x5h0nf" path="res://Carrot Cannon.png" id="2_lmci4"]
-[ext_resource type="Texture2D" uid="uid://b5dqav68wkr58" path="res://Carrot Cannon base.png" id="2_s8oic"]
+[ext_resource type="PackedScene" uid="uid://b2vt2s656fr3m" path="res://Buildings/building.tscn" id="1_wimi5"]
+[ext_resource type="Texture2D" uid="uid://dn8nxh8x5h0nf" path="res://Buildings/BuildingArt/Carrot Cannon.png" id="2_lmci4"]
+[ext_resource type="Texture2D" uid="uid://b5dqav68wkr58" path="res://Buildings/BuildingArt/Carrot Cannon base.png" id="2_s8oic"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8k38"]
 atlas = ExtResource("2_lmci4")
@@ -40,7 +40,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Carrot Cannon" unique_id=1422852066 instance=ExtResource("1_wimi5")]
+[node name="Carrot Cannon" unique_id=1422852066 node_paths=PackedStringArray("bulletSpawn") instance=ExtResource("1_wimi5")]
+bulletSpawn = NodePath("Pivot/Head/BulletSpawn")
 
 [node name="Pivot" parent="." index="0" unique_id=1085883043]
 position = Vector2(0, -168)
@@ -50,6 +51,10 @@ texture_filter = 1
 position = Vector2(24, 1.2239188e-06)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_lrygq")
+
+[node name="BulletSpawn" type="Marker2D" parent="Pivot/Head" index="0" unique_id=1425305804]
+position = Vector2(-2.0981465e-06, -48)
+rotation = -1.5707964
 
 [node name="Base" parent="." index="1" unique_id=1108329169]
 texture_filter = 1

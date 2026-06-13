@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dn8nxh8x5h0nf"
-path="res://.godot/imported/Carrot Cannon.png-5e7e264ee57641fecb4a1d38087462ee.ctex"
+path="res://.godot/imported/Carrot Cannon.png-ecae46a84a96673c7095aa455a8909d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Carrot Cannon.png"
-dest_files=["res://.godot/imported/Carrot Cannon.png-5e7e264ee57641fecb4a1d38087462ee.ctex"]
+source_file="res://Buildings/BuildingArt/Carrot Cannon.png"
+dest_files=["res://.godot/imported/Carrot Cannon.png-ecae46a84a96673c7095aa455a8909d7.ctex"]
 
 [params]
 

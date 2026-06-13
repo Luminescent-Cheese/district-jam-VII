@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://b2vt2s656fr3m"]
 
-[ext_resource type="Script" uid="uid://drt0bg1skvdpg" path="res://buildingBase.gd" id="1_2yopf"]
-[ext_resource type="Texture2D" uid="uid://6j5q4vcde6ai" path="res://icon.svg" id="1_5j34s"]
+[ext_resource type="Script" uid="uid://drt0bg1skvdpg" path="res://Buildings/buildingBase.gd" id="1_282m8"]
+[ext_resource type="Texture2D" uid="uid://6j5q4vcde6ai" path="res://icon.svg" id="2_hr4wu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yopf"]
 size = Vector2(129, 190.5)
 
 [node name="Building" type="CharacterBody2D" unique_id=1422852066]
-script = ExtResource("1_2yopf")
+script = ExtResource("1_282m8")
+fireRate = 0.5
 
 [node name="Pivot" type="Node2D" parent="." unique_id=1085883043]
 position = Vector2(0, -46.5)
@@ -15,8 +16,12 @@ position = Vector2(0, -46.5)
 [node name="Base" type="Sprite2D" parent="." unique_id=1108329169]
 position = Vector2(0, -46.5)
 scale = Vector2(0.4375, 0.7265625)
-texture = ExtResource("1_5j34s")
+texture = ExtResource("2_hr4wu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1382810759]
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_2yopf")
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1664144274]
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
