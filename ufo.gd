@@ -12,7 +12,7 @@ var time_doing_action = 0.0
 const MOVE_TIME_SECS = 0.5
 const SCAN_TIME_SECS = 0.2
 
-var searched_same_direction_count = 0
+var moveed_same_direction_count = 0
 var direction: Vector2 = Vector2.ZERO
 const SPEED = 250.0
 
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	if current_action == UfoAction.SCAN:	
 		scan_for_cow()
 	elif current_action == UfoAction.MOVE:
-		search()
+		move()
 	elif current_action == UfoAction.LOWER:
 		lower()
 
@@ -54,7 +54,7 @@ func scan_for_cow():
 			cow_in_beam = cow
 			break
 
-func search():
+func move():
 	var bounds = CoordsUtils.get_camera_bounds(player_camera)
 	if (global_position.x < bounds.min_x):
 		direction = Vector2(1, 0)
