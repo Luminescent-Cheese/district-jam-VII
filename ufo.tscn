@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b5fhluriwxwjm"]
+
+[ext_resource type="Texture2D" uid="uid://6j5q4vcde6ai" path="res://icon.svg" id="1_c0rv2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ug312"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c0rv2")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0rv2"]
+radius = 23.0
+height = 142.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0rv2"]
+size = Vector2(111, 1598.5128)
+
+[node name="UFO" type="CharacterBody2D" unique_id=730736805]
+
+[node name="ShipAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1775578603]
+scale = Vector2(1, 0.3046875)
+sprite_frames = SubResource("SpriteFrames_ug312")
+animation = &"hover"
+
+[node name="ShipCollisionShape2D" type="CollisionShape2D" parent="." unique_id=514977809]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_c0rv2")
+
+[node name="Beam2D" type="Area2D" parent="." unique_id=1697338394]
+collision_layer = 0
+collision_mask = 2
+
+[node name="BeamCollisionShape2D" type="CollisionShape2D" parent="Beam2D" unique_id=547885739]
+position = Vector2(0.5, 260.47656)
+scale = Vector2(1, 0.3046875)
+shape = SubResource("RectangleShape2D_c0rv2")
+
+[node name="Beam" type="ColorRect" parent="Beam2D" unique_id=1013836005]
+offset_left = -55.0
+offset_top = 17.0
+offset_right = 55.0
+offset_bottom = 504.0
+color = Color(1, 1, 0.05882353, 0.56078434)

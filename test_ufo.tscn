@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b8ul5s4o8dqnc"]
+
+[ext_resource type="Script" uid="uid://3jgm0frvnytf" path="res://test_ufo.gd" id="1_wsehn"]
+[ext_resource type="PackedScene" uid="uid://cv4cjmrwxdvsb" path="res://cow.tscn" id="2_j74f2"]
+[ext_resource type="Texture2D" uid="uid://6j5q4vcde6ai" path="res://icon.svg" id="2_sfm6n"]
+[ext_resource type="PackedScene" uid="uid://b5fhluriwxwjm" path="res://ufo.tscn" id="3_j74f2"]
+
+[node name="test" type="Node2D" unique_id=1199137001]
+script = ExtResource("1_wsehn")
+cow_scene = ExtResource("2_j74f2")
+ufo_scene = ExtResource("3_j74f2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=25180313]
+position = Vector2(6, -168)
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=2018497495]
+position = Vector2(-2, 64)
+scale = Vector2(20, 1)
+texture = ExtResource("2_sfm6n")
+
+[node name="CowStartLocation" type="Marker2D" parent="." unique_id=2103047353]
+position = Vector2(-344, -16)

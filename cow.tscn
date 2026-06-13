@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cv4cjmrwxdvsb"]
+
+[ext_resource type="Texture2D" uid="uid://6j5q4vcde6ai" path="res://icon.svg" id="1_nuh3y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ug312"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nuh3y")
+}],
+"loop": true,
+"name": &"rest",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0rv2"]
+radius = 16.0
+height = 64.0
+
+[node name="Cow" type="CharacterBody2D" unique_id=730736805]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1775578603]
+position = Vector2(8, -4.7683716e-07)
+scale = Vector2(0.375, 0.25)
+sprite_frames = SubResource("SpriteFrames_ug312")
+animation = &"rest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=514977809]
+position = Vector2(8, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_c0rv2")
