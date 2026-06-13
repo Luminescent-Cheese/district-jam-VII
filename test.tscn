@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://p2fvrphmnn0l"]
 
-[ext_resource type="PackedScene" uid="uid://b2vt2s656fr3m" path="res://building.tscn" id="1_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://cvsegvgq73n84" path="res://carrot_cannon.tscn" id="1_8uh7m"]
 [ext_resource type="Texture2D" uid="uid://6j5q4vcde6ai" path="res://icon.svg" id="1_37kl0"]
 
 [node name="test" type="Node2D" unique_id=1199137001]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=25180313]
+[node name="Carrot Cannon" parent="." unique_id=1422852066 instance=ExtResource("1_8uh7m")]
 position = Vector2(6, -168)
 
-[node name="Building" parent="." unique_id=1422852066 instance=ExtResource("1_8uh7m")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=25180313]
+position = Vector2(6, -168)
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=2018497495]
 position = Vector2(-2, 64)

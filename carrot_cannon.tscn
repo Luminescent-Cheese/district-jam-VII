@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cvsegvgq73n84"]
+
+[ext_resource type="PackedScene" uid="uid://b2vt2s656fr3m" path="res://building.tscn" id="1_wimi5"]
+[ext_resource type="Texture2D" uid="uid://dn8nxh8x5h0nf" path="res://Carrot Cannon.png" id="2_lmci4"]
+[ext_resource type="Texture2D" uid="uid://b5dqav68wkr58" path="res://Carrot Cannon base.png" id="2_s8oic"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8k38"]
+atlas = ExtResource("2_lmci4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdgp1"]
+atlas = ExtResource("2_lmci4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8imws"]
+atlas = ExtResource("2_lmci4")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlq33"]
+atlas = ExtResource("2_lmci4")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lrygq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8k38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdgp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8imws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlq33")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Carrot Cannon" unique_id=1422852066 instance=ExtResource("1_wimi5")]
+
+[node name="Pivot" parent="." index="0" unique_id=1085883043]
+position = Vector2(0, -168)
+
+[node name="Head" type="AnimatedSprite2D" parent="Pivot" index="0" unique_id=1969785330]
+texture_filter = 1
+position = Vector2(24, 1.2239188e-06)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_lrygq")
+
+[node name="Base" parent="." index="1" unique_id=1108329169]
+texture_filter = 1
+position = Vector2(0, -128)
+scale = Vector2(1, 1)
+texture = ExtResource("2_s8oic")
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1382810759]
+position = Vector2(0, -95)
